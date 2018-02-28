@@ -58,6 +58,7 @@ const mapStyle = {
 };
 
 const INITIAL_ZOOM: [number] = [12];
+const INITIAL_CENTER = [-77.05, 38.9];
 
 export interface State {
   styleKey: MapStyle;
@@ -87,7 +88,7 @@ class StyleUpdate extends React.Component<{}, State> {
           <Map
             style={styleObj.url}
             containerStyle={mapStyle}
-            center={[-77.05, 38.9]}
+            center={INITIAL_CENTER}
             zoom={INITIAL_ZOOM}
           >
             <GeoJSONLayer
