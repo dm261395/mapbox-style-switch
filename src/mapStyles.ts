@@ -1,9 +1,14 @@
 import { FeatureCollection, Point } from "geojson";
 
-const lightGeoJson: FeatureCollection<
-  Point,
-  { place: string; login: string; lat: string; lon: string; color: string }
-> = {
+type PointProperties = {
+  place: string;
+  login: string;
+  lat: string;
+  lon: string;
+  color: string;
+};
+
+const lightGeoJson: FeatureCollection<Point, PointProperties> = {
   type: "FeatureCollection",
   features: [
     {
@@ -191,10 +196,7 @@ const lightGeoJson: FeatureCollection<
   ]
 };
 
-const darkGeoJson: FeatureCollection<
-  Point,
-  { place: string; login: string; lat: string; lon: string; color: string }
-> = {
+const darkGeoJson: FeatureCollection<Point, PointProperties> = {
   type: "FeatureCollection",
   features: [
     {
@@ -390,10 +392,7 @@ export type MapStyle = typeof LightMapStyle | typeof DarkMapStyle;
 export const styleConfig: {
   [K in MapStyle]: {
     url: string;
-    geoJson: FeatureCollection<
-      Point,
-      { place: string; login: string; lat: string; lon: string; color: string }
-    >;
+    geoJson: FeatureCollection<Point, PointProperties>;
   }
 } = {
   [LightMapStyle]: {
