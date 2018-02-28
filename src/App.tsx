@@ -57,6 +57,8 @@ const mapStyle = {
   width: "100%"
 };
 
+const INITIAL_ZOOM: [number] = [12];
+
 export interface State {
   styleKey: MapStyle;
 }
@@ -82,7 +84,12 @@ class StyleUpdate extends React.Component<{}, State> {
     return (
       <div className="App">
         <Container>
-          <Map style={styleObj.url} containerStyle={mapStyle}>
+          <Map
+            style={styleObj.url}
+            containerStyle={mapStyle}
+            center={[-77.05, 38.9]}
+            zoom={INITIAL_ZOOM}
+          >
             <GeoJSONLayer
               data={styleObj.geoJson}
               circleLayout={{ visibility: "visible" }}
